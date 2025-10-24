@@ -1,4 +1,3 @@
-# core/text_utils.py
 import re
 import html
 import unicodedata

@@ -1,4 +1,3 @@
-# core/scraping.py
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -40,50 +39,6 @@ def scrape_competitor_info(product_url):
             data['error'] = "Título não encontrado."
         elif data['price'] is None:
             data['error'] = "Preço não encontrado."
-
-    except requests.RequestException as e:
-        data['error'] = f"Erro de rede: {e}"
-    except Exception as e:
-        data['error'] = f"Erro inesperado: {e}"
-
-    return data
-
-
-def scrape_ml_product_basic_info(product_url):
-    data = {
-        "title": None, "price": None, "original_price": None,
-        "description_html": None, "description_text": None,
-        "pictures": [], "error": None
-    }
-
-    try:
-        resp = requests.get(product_url, headers=HEADERS, timeout=20)
-        resp.raise_for_status()
-        html = resp.text
-        soup = BeautifulSoup(html, 'lxml')
-
-        title = soup.find('h1', class_='ui-pdp-title') or soup.find('h1')
-        if title:
-            data['title'] = title.get_text(strip=True)
-
-        meta_price = soup.find('meta', itemprop='price')
-        if meta_price:
-            data['price'] = float(meta_price['content'])
-
-        if data['price'] is None:
-            match = re.search(r'"price"\s*:\s*([0-9]+(?:\.[0-9]+)?)', html)
-            if match:
-                data['price'] = float(match.group(1))
-
-        desc_div = soup.find('div', class_='ui-pdp-description')
-        if desc_div:
-            p = desc_div.find('p', class_='ui-pdp-description__content')
-            if p:
-                data['description_html'] = p.decode_contents()
-                data['description_text'] = p.get_text(separator='\n', strip=True)
-
-        imgs = soup.find_all('meta', property='og:image')
-        data['pictures'] = [{"source": i['content']} for i in imgs if i.get('content')]
 
     except requests.RequestException as e:
         data['error'] = f"Erro de rede: {e}"
