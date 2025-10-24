@@ -15,6 +15,10 @@ from app_gui.tabs.tab_tiny_products import TabTinyProducts
 from services.abc_importer import ABCImporter
 from services.abc_service import ABCService
 from services.task_enqueue import TaskEnqueueService, EnqueueItem
+from core.scraping import scrape_ml_product_basic_info
+from core.text_utils import html_to_text
+
+
 
 class App:
     def __init__(self):
