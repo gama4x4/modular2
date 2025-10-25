@@ -1,3 +1,7 @@
 requests
+pandas
 beautifulsoup4
 lxml
+tk
+Pillow
+reportlab

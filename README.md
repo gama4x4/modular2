@@ -1,46 +1,61 @@
-# Sistema Modular - Mercado Livre + Tiny ERP
+# Modular2 🧠🔧
 
-Este é um projeto modular Python para gerenciamento de tarefas, integração com a API do Mercado Livre e Tiny ERP, e uma interface gráfica simples com Tkinter.
+Este projeto é a versão **modularizada** do antigo script `MERCADOLIVRE_TINY_API_3.0.py`.  
+Transformamos um monólito em um sistema escalável, testável e pronto para produção.
 
-## 📦 Estrutura Modular
+---
 
-```
-core/
-    scraping.py          # Funções de scraping de dados do Mercado Livre
-    text_utils.py        # Funções de limpeza e normalização de texto
-db/
-    manager.py           # Gerenciador SQLite com controle de tarefas
-services/
-    task_queue.py        # Serviço de fila de tarefas
-integrations/
-    mercadolivre_api.py  # Integração OAuth e API Mercado Livre
-    tiny_api.py          # Integração com a API do Tiny ERP
-app_gui/
-    queue_manager.py     # GUI para visualização e controle de tarefas
-main.py                  # Ponto de entrada da aplicação
-requirements.txt         # Dependências do projeto
-```
+## 🚀 Como executar
 
-## 🚀 Como usar
-
-1. Instale as dependências:
 ```bash
+git clone https://github.com/gama4x4/modular2
+cd modular2
 pip install -r requirements.txt
-```
-
-2. Rode o app:
-```bash
 python main.py
 ```
 
-## 🛠 Tecnologias
+---
 
-- Python 3.8+
-- SQLite3
-- Tkinter (GUI)
-- Requests (API)
-- BeautifulSoup + lxml (Scraping)
+## 🧱 Estrutura Modular
 
-## 📄 Licença
+```
+core/
+  └── config.py, text_utils.py
+db/
+  └── manager.py
+services/
+  └── task_queue.py, ...
+integrations/
+  └── mercadolivre_api.py, tiny_api.py, oauth_handler.py
+app_gui/
+  └── queue_window.py, widgets.py, utils.py
+scraping/
+  └── category_browser.py
+tests/
+  └── test_*.py
+main.py
+```
 
-MIT
+---
+
+## 🧪 Testes
+
+```bash
+python -m unittest discover -s tests
+```
+
+---
+
+## 📦 Dependências (requirements.txt)
+
+- requests
+- pandas
+- beautifulsoup4
+- lxml
+- tkinter
+- pillow
+- reportlab (opcional)
+
+---
+
+## 🛠️ Feito com 💚 por [@gama4x4](https://github.com/gama4x4)

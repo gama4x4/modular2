@@ -1,0 +1,44 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.env/
+.venv/
+env/
+venv/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Mac OS / Linux / Windows
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.db
+*.sqlite3
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Test results
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.pytest_cache/
+
+# Secrets and tokens
+*.env
+.env.*
